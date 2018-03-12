@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:orientation="vertical"
+    tools:context="androiduseasserver.administrator.slidingbutton.MainActivity">
+
+    <androiduseasserver.administrator.slidingbuttonlibrary.SlidingButton
+        android:id="@+id/slidingBtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        app:normalTextColor="#666666"
+        app:selectTextColor="#FFFFFF"
+        app:backGroundIcon="@drawable/sliding_button_bg"
+        app:selectBackGroundIcon="@drawable/sliding_button_sel"
+        app:buttonTextSize="15sp"/>
+
+
+    <androiduseasserver.administrator.slidingbuttonlibrary.SlidingButton
+        android:id="@+id/slidingBtnSecond"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        app:normalTextColor="#666666"
+        app:selectTextColor="#FFFFFF"
+        app:backGroundIcon="@drawable/sliding_button_bg"
+        app:selectBackGroundIcon="@drawable/sliding_button_sel"
+        app:buttonTextSize="15sp"/>
+
+
+</LinearLayout>

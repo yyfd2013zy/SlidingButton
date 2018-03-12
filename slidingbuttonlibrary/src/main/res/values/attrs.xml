@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+
+    <attr name="backGroundIcon" format="reference" />
+    <attr name="normalTextColor" format="color" />
+    <attr name="selectTextColor" format="color" />
+    <attr name="selectBackGroundIcon" format="reference" />
+    <attr name="buttonTextSize" format="dimension" />
+
+    <declare-styleable name="SlidingButton">
+        <attr name="backGroundIcon" />
+        <attr name="normalTextColor" />
+        <attr name="selectTextColor" />
+        <attr name="selectBackGroundIcon" />
+        <attr name="buttonTextSize" />
+    </declare-styleable>
+
+</resources>

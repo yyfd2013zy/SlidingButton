@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingLeft="15dp"
+              android:paddingRight="15dp">
+
+    <!--用于展示动画的层-->
+    <LinearLayout
+        android:id="@+id/ll_bg_all_sel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <!--显示内容层-->
+    <LinearLayout
+        android:id="@+id/ll_bg_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+</FrameLayout>
