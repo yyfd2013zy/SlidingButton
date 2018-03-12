@@ -47,8 +47,8 @@ public class SlidingButton extends LinearLayout {
     private String[] btnTexts;
     private ButtonItemClickListener buttonItemClickListener;
     private int nowSelectIndex;//当前选中状态
-    private ArrayList<TextView> allItemTextList = new ArrayList<>();
-
+    private ArrayList<TextView> allItemTextViews = new ArrayList<>();
+    private ArrayList<LinearLayout> allISelBgViews = new ArrayList<>();
     LinearLayout ll_bg_all;
     LinearLayout animalLayout;
 
@@ -113,7 +113,8 @@ public class SlidingButton extends LinearLayout {
 
     private void setUI() {
         ll_bg_all.removeAllViews();
-        allItemTextList.clear();
+        allItemTextViews.clear();
+        allISelBgViews.clear();
         addTextViews();
         addAnimalViews();
     }
@@ -143,6 +144,7 @@ public class SlidingButton extends LinearLayout {
                         int removeRule = finalI - nowSelectIndex;//移动规则，当前点击的减去当前选中的
                         nowSelectIndex = finalI;
                         startAnimal(animalItem, item_txt, s, removeRule);
+                        allBgEnableSet(false);
                     }
                 });
             } else {
@@ -150,7 +152,8 @@ public class SlidingButton extends LinearLayout {
             }
             item_txt.setText(s);
             ll_bg_all.addView(btnItem);
-            allItemTextList.add(item_txt);
+            allItemTextViews.add(item_txt);
+            allISelBgViews.add(item_bg);
             i++;
         }
     }
@@ -180,6 +183,7 @@ public class SlidingButton extends LinearLayout {
         this.nowSelectIndex = nowSelectIndex;
     }
 
+    //补间动画移动
     private void startAnimal(View view, final TextView textView, final String s, int removeRule) {
         AnimationSet animationSet = new AnimationSet(true);
             /*
@@ -229,6 +233,7 @@ public class SlidingButton extends LinearLayout {
                         //动画结束
                         animalItem = animalViewsList.get(nowSelectIndex);//下一次点击需要进行移动的view
                         textView.setTextColor(selTextColor);
+                        allBgEnableSet(true);
                         animalItem.findViewById(R.id.item_bg).setBackgroundResource(selectBackGroundIcon);
                         buttonItemClickListener.buttonItemClickListener(s);//回调
                     }
@@ -246,12 +251,18 @@ public class SlidingButton extends LinearLayout {
 
 
     private void resetItemViews() {
-        for (TextView textView : allItemTextList) {
+        for (TextView textView : allItemTextViews) {
             textView.setTextColor(normalTextColor);
         }
 
         for (View view : animalViewsList) {
             view.findViewById(R.id.item_bg).setBackgroundResource(0);
+        }
+    }
+
+    private void allBgEnableSet(boolean enable){
+        for (LinearLayout textView: allISelBgViews){
+            textView.setEnabled(enable);
         }
     }
 
