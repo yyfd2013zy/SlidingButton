@@ -51,6 +51,8 @@ public class SlidingButton extends LinearLayout {
     private ArrayList<LinearLayout> allISelBgViews = new ArrayList<>();
     LinearLayout ll_bg_all;
     LinearLayout animalLayout;
+    TextView selTv;
+    String selText;
 
     private View animalItem;//要进行动画变换的view对象
     private ArrayList<View> animalViewsList = new ArrayList<>(); //展示动画的item
@@ -129,6 +131,8 @@ public class SlidingButton extends LinearLayout {
             //按钮内文字
             final TextView item_txt = (TextView) btnItem.findViewById(R.id.item_txt);
             if (i == nowSelectIndex) {
+                selTv = item_txt;
+                selText = s;
                 item_txt.setTextColor(selTextColor);
             } else {
                 item_txt.setTextColor(normalTextColor);
@@ -180,7 +184,13 @@ public class SlidingButton extends LinearLayout {
 
     //设置当前的选中
     public void setNowSelectIndex(int nowSelectIndex) {
+        if (this.nowSelectIndex == nowSelectIndex) {
+            return;//点击相同按键，不做任何操作
+        }
+        int removeRule = nowSelectIndex - this.nowSelectIndex;//移动规则，当前点击的减去当前选中的
         this.nowSelectIndex = nowSelectIndex;
+        startAnimal(animalItem, selTv, selText, removeRule);
+        allBgEnableSet(false);
     }
 
     //补间动画移动

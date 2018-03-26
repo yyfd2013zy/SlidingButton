@@ -2,6 +2,7 @@ package androiduseasserver.administrator.slidingbutton;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androiduseasserver.administrator.slidingbuttonlibrary.SlidingButton;
@@ -16,6 +17,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                slidingBtnSecond.setNowSelectIndex(2);
+            }
+        });
     }
 
     private void initView() {
